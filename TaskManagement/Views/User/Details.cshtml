@@ -1,0 +1,75 @@
+﻿@model DemoIndentityCore.Areas.Identity.Data.ITask
+
+@{
+    ViewData["Title"] = "Details Of Task";
+}
+
+<h1>Details</h1>
+
+<div>
+    <hr />
+    <form asp-action="Details">
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TaskId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TaskId)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Contentt)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Contentt)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TimeStart)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TimeStart)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TimeEnd)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TimeEnd)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TaskStatus)
+            </dt>
+            @{ var status = ViewBag.UserTask; }
+        <dd class="col-sm-2">
+            <div class="form-group">               
+                @if (String.Compare(@status, "To do", true) == 0)
+                {
+                    @Html.DropDownList("Status", new List<SelectListItem>
+                    {
+                        new SelectListItem { Text = @status, Value=@status },
+                        new SelectListItem { Text = "Done", Value="Done" }
+                    }, new { @class = "form-control" })
+                }
+                else
+                {
+                    @Html.DropDownList("Status", new List<SelectListItem>
+                    {
+                        new SelectListItem { Text = @status, Value=@status },
+                        new SelectListItem { Text = "To do", Value="To do" }
+                    }, new { @class = "form-control" })
+                }               
+            </div>
+        </dd>
+        </dl>
+        <div class="form-group">
+            <input type="submit" value="Update" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+<div>   
+    <a asp-action="Index">Back to List</a>
+</div>

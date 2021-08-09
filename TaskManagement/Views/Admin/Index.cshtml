@@ -1,0 +1,65 @@
+﻿@model IEnumerable<DemoIndentityCore.Areas.Identity.Data.ITask>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Management Task</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Task</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contentt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeEnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contentt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeEnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskStatus)
+            </td>
+            <td>
+                @Html.ActionLink("Add user", "AddUser", new {  id=item.TaskId }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.TaskId  }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.TaskId  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

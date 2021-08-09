@@ -1,0 +1,58 @@
+﻿@model IEnumerable<DemoIndentityCore.Areas.Identity.Data.ITask>
+
+@{
+    ViewData["Title"] = "My Task";
+}
+
+<h1>List My Task</h1>
+
+<p>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contentt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeEnd)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contentt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeEnd)
+            </td>
+            
+            <td>               
+                @Html.ActionLink("Details", "Details", new { id = item.TaskId }) ...
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
